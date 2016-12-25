@@ -3,15 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AccountListComponent } from '../TMP.BNK.Account/account-list.component';
 import { BankOnlineComponent } from './bank-online.component'
 import { HeaderComponent } from './header.component';
 
 import { ClientModule } from '../TMP.BNK.Client/client.module';
+import { AccountModule } from '../TMP.BNK.Account/account.module';
 
 @NgModule({
   declarations: [
-    AccountListComponent,
     BankOnlineComponent,
     HeaderComponent
   ],
@@ -19,7 +18,8 @@ import { ClientModule } from '../TMP.BNK.Client/client.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    ClientModule
+    ClientModule,
+    AccountModule
   ],
   providers: [],
   bootstrap: [BankOnlineComponent]

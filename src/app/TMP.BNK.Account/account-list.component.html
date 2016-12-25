@@ -1,3 +1,18 @@
-<p>
-  account-list works!
-</p>
+<h2>
+  Account Lists:
+</h2>
+
+<table>
+  <tr>
+    <td>Account Number</td>
+    <td>Title</td>
+    <td>Type</td>
+    <td>Balance</td>
+  </tr>
+  <tr *ngFor="let account of _accounts">
+      <td>{{account.number}}</td>
+      <td>{{account.title}}</td>
+      <td>{{account.type}}</td>
+      <td>{{account.balance}}</td>
+  </tr>
+</table>
