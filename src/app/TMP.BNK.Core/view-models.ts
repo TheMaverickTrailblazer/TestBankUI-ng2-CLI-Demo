@@ -1,11 +1,11 @@
 export interface Account {
-    number: string;
-    title: string;
-    type: string;
-    balance: number;
-    clientId: number;
+    Number: string;
+    Title: string;
+    Type: string;
+    Balance: number;
+    ClientId: number;
 }
 export interface Client{
-    id:number;
-    name:string;
+    Id:number;
+    Name:string;
 }

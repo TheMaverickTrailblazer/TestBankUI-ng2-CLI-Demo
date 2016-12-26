@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Account } from '../TMP.BNK.Core/view-models'
+import { AccountService } from '../TMP.BNK.Account-Store/account.service';
 
 @Component({
   selector: 'bnk-account-list',
-  templateUrl: './account-list.component.html'
+  templateUrl: './account-list.component.html',
+  providers: [AccountService]
 })
 export class AccountListComponent implements OnInit {
+  private _accounts: Account[];
+  private _clientId: number = 12345;
 
-  private _accounts: Account[] = [
-    { "number": "CA123456789", "title": "John Smith - Checking Account", "type": "Checkiing", "balance": 1500, "clientId": 12345 },
-    { "number": "SA987654223", "title": "Jonh Smith - Saving Account", "type": "Saving", "balance": 1200, "clientId": 12345 }
-  ];
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
+    this.accountService.getAccounts(this._clientId)
+      .subscribe(accounts => {
+        this._accounts = accounts;
+      });
   }
-
 }
