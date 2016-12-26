@@ -12,9 +12,6 @@
 
 <button (click)="createAccount()">Create an Account</button>
 
-<div *ngIf="action=='C'">
-  <bnk-account-create 
-    [clientId]="clientId"
-    (OnCreate)="refreshAccountList()"
-  ></bnk-account-create>
+<div *ngIf="action==1">
+  <bnk-account-create [clientId]="clientId" (OnCreate)="refreshAccountList()"></bnk-account-create>
 </div>

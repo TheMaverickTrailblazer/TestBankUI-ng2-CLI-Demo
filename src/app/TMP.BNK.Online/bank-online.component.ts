@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Account } from '../TMP.BNK.Core/view-models'
 import { AccountService } from '../TMP.BNK.Account-Store/account.service';
+import { Operation } from '../TMP.BNK.Core/constants'
 
 @Component({
   selector: 'bnk-bank-online',
@@ -10,7 +11,7 @@ import { AccountService } from '../TMP.BNK.Account-Store/account.service';
 export class BankOnlineComponent implements OnInit {
   private clientId: number = 12345;
   private accounts: Account[];
-  private action: string;
+  private action: Operation;
   private message: string;
   constructor(private accountService: AccountService) {
     this.message = "";
@@ -26,7 +27,7 @@ export class BankOnlineComponent implements OnInit {
       });
   }
   createAccount() {
-    this.action = "C";
+    this.action = Operation.CREATE;
   }
   refreshAccountList() {
     this.getAccounts();
