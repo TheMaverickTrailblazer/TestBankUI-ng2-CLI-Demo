@@ -17,9 +17,9 @@ export class AccountCreateComponent implements OnInit {
   ngOnInit() {
     this.acccount = {
       Number: "SA000000001",
-      Title: "Test Account",
-      Type: "Saving",
-      Balance: 100,
+      Title: "",
+      Type: "",
+      Balance: null,
       ClientId: this.clientId
     };
   }
