@@ -2,9 +2,19 @@
   <bnk-header></bnk-header>
 </div>
 <div class="md-cols-4">
-  <bnk-client-info></bnk-client-info>
+  <bnk-client-info [clientId]="clientId"></bnk-client-info>
 </div>
 <p>
   Welcome to TMP Banking Online!!
 </p>
-<bnk-account-list></bnk-account-list>
+<bnk-account-list [accounts]="accounts">
+</bnk-account-list>
+
+<button (click)="createAccount()">Create an Account</button>
+
+<div *ngIf="action=='C'">
+  <bnk-account-create 
+    [clientId]="clientId"
+    (OnCreate)="refreshAccountList()"
+  ></bnk-account-create>
+</div>
