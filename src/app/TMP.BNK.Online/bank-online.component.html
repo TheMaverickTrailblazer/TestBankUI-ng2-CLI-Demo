@@ -1,16 +1,16 @@
-<div class="md-cols-8">
-  <bnk-header></bnk-header>
-</div>
-<div class="md-cols-4">
-  <bnk-client-info [clientId]="clientId"></bnk-client-info>
+<div class="row">
+  <div class="col-md-4">
+    <bnk-header></bnk-header>
+  </div>
+  <div class="col-md-4">
+    <bnk-client-info [clientId]="clientId"></bnk-client-info>
+  </div>
 </div>
 <p>
   Welcome to TMP Banking Online!!
 </p>
-<bnk-account-list [accounts]="accounts" 
-    (OnDepositRequested)="showDepositModal($event)" 
-    (OnWithdrawRequested)="showWithdrawModal($event)"
-    (OnDeleteRequested)="showDeleteAccountModal($event)">
+<bnk-account-list [accounts]="accounts" (OnDepositRequested)="showDepositModal($event)" (OnWithdrawRequested)="showWithdrawModal($event)"
+  (OnDeleteRequested)="showDeleteAccountModal($event)">
 </bnk-account-list>
 <button (click)="showCreateAccountModal()">Create an Account</button>
 <hr/>
