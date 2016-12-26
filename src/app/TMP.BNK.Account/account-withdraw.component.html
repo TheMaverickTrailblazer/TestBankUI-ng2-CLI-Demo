@@ -2,13 +2,16 @@
     <form (ngSubmit)="withdraw()" #withdrawForm="ngForm">
         <h2>Withdraw</h2>
         <p>Account: {{account.Title}} ({{account.Number}})</p>
+        <p>Current Balance: {{account.Balance}}</p>
         <div class="form-group">
-            <label for="Amount">Amount</label>
-            <input type="number" [(ngModel)]="amount" placeholder="Amount" class="form-control" id="Amount" name="Amount" required #withdrawAmount="ngModel"
-                max="10000" min="1">
+            <label for="Amount">Amount*</label>
+            <input type="number" [(ngModel)]="amount" placeholder="Amount" class="form-control" id="Amount" name="Amount" required #withdrawAmount="ngModel">
             <div [hidden]="withdrawAmount.valid || withdrawAmount.pristine" class="alert alert-danger">
                 Amount is required
             </div>
+        </div>
+        <div *ngIf="message" class="alert alert-danger">
+            {{message}}
         </div>
         <button type="submit" class="btn btn-default" [disabled]="!withdrawForm.form.valid">Withdraw</button>
     </form>

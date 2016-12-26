@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Account } from '../TMP.BNK.Core/view-models';
+import { Account, OperationResponse } from '../TMP.BNK.Core/view-models';
 import { AccountService } from '../TMP.BNK.Account-Store/account.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class AccountDepositComponent implements OnInit {
     @Input() account: Account;
     @Output() OnDeposited = new EventEmitter();
     private amount: number;
+    private message: string;
     constructor(private accountService: AccountService) {
     }
 
@@ -18,8 +19,16 @@ export class AccountDepositComponent implements OnInit {
 
     deposit() {
         this.accountService.deposit(this.account.Number, this.amount)
-            .subscribe(response => {
-                this.OnDeposited.emit();
+            .subscribe((response: OperationResponse) => {
+                this.postDepositProcess(response)
             });
+    }
+    postDepositProcess(response: OperationResponse) {
+        if (response.IsSuccess) {
+            this.OnDeposited.emit();
+        }
+        else{
+            this.message= response.Message;
+        }
     }
 }

@@ -3,7 +3,7 @@
    <p>Client: {{clientId}}</p>
   <form (ngSubmit)="createAccount()" #createForm="ngForm">
     <div class="form-group">
-      <label for="Title">Tile</label>
+      <label for="Title">Tile*</label>
       <input type="text" [(ngModel)]="acccount.Title" placeholder="Title" class="form-control" id="Title" name="Title" required
         #title="ngModel">
       <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
@@ -15,14 +15,14 @@
       <input type="text" [(ngModel)]="acccount.Type" placeholder="Type" class="form-control" id="Type" name="Type" required #type="ngModel">
     </div>-->
     <div class="form-group">
-      <label for="Type">Type</label>
+      <label for="Type">Type*</label>
       <select [(ngModel)]="acccount.Type" class="form-control" id="Type" name="Type" required>
         <option *ngFor="let type of accountTypes" [value]="type.key">{{type.value}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="Amount">Amount</label>
+      <label for="Amount">Amount*</label>
       <input type="number" [(ngModel)]="acccount.Balance" placeholder="Amount" class="form-control" id="Amount" name="Amount" required
         #depositAmount="ngModel" max="10000" min="1">
       <div [hidden]="depositAmount.pristine || depositAmount.value>=100" class="alert alert-danger">
