@@ -24,7 +24,7 @@
     <div class="form-group">
       <label for="Amount">Amount*</label>
       <input type="number" [(ngModel)]="acccount.Balance" placeholder="Amount" class="form-control" id="Amount" name="Amount" required
-        #depositAmount="ngModel" max="10000" min="1">
+        #depositAmount="ngModel" min="1">
       <div [hidden]="depositAmount.pristine || depositAmount.value>=100" class="alert alert-danger">
         Need to deposit minimum $100
       </div>

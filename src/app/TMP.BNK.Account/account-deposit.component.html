@@ -2,7 +2,7 @@
     <form (ngSubmit)="deposit()" #depositForm="ngForm">
         <h2>Deposit</h2>
         <p>Account: {{account.Title}} ({{account.Number}})</p>
-        <p>Current Balance: {{account.Balance}}</p>
+        <p>Current Balance: {{account.Balance | currency:'USD':true}}</p>
         <div class="form-group">
             <label for="Amount">Amount*</label>
             <input type="number" [(ngModel)]="amount" placeholder="Amount" class="form-control" id="Amount" name="Amount" required #depositAmount="ngModel"
