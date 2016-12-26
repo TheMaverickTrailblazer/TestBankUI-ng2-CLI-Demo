@@ -11,6 +11,7 @@ import { Operation } from '../TMP.BNK.Core/constants'
 export class BankOnlineComponent implements OnInit {
   private clientId: number = 12345;
   private accounts: Account[];
+  private selectedAccount: string;
   private action: Operation;
   private message: string;
   constructor(private accountService: AccountService) {
@@ -26,12 +27,15 @@ export class BankOnlineComponent implements OnInit {
         this.accounts = accounts;
       });
   }
-  createAccount() {
+  showCreateAccountModal() {
     this.action = Operation.CREATE;
+  }
+  showDeleteAccountModal(accountNumber) {
+    this.action = Operation.DELETE;
+    this.selectedAccount = accountNumber;
   }
   refreshAccountList() {
     this.getAccounts();
-    this.message = "Account has been created";
     console.log("Account created");
   }
 }

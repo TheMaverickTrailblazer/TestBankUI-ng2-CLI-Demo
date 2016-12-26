@@ -7,11 +7,14 @@
 <p>
   Welcome to TMP Banking Online!!
 </p>
-<bnk-account-list [accounts]="accounts">
+<bnk-account-list [accounts]="accounts" (OnDeleteRequest)="showDeleteAccountModal($event)">
 </bnk-account-list>
-
-<button (click)="createAccount()">Create an Account</button>
-
+<button (click)="showCreateAccountModal()">Create an Account</button>
+<hr/>
 <div *ngIf="action==1">
-  <bnk-account-create [clientId]="clientId" (OnCreate)="refreshAccountList()"></bnk-account-create>
+  <bnk-account-create [clientId]="clientId" (OnCreated)="refreshAccountList()"></bnk-account-create>
+</div>
+--{{selectedAccount}}
+<div *ngIf="action==2 && selectedAccount">
+  <bnk-account-delete [accountNumber]="selectedAccount" (OnDeleted)="refreshAccountList()"></bnk-account-delete>
 </div>

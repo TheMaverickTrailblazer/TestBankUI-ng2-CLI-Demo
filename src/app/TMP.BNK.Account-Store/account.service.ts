@@ -9,6 +9,7 @@ export interface IAccountService {
     getAccounts(clientId: number): Observable<Account[]>
     getAccountDetails(clientId: number, accountNumber: string);
     createAccount(account: Account): Observable<Account[]>
+    deleteAccount(accountNumber: string): Observable<any>
 }
 
 @Injectable()
@@ -26,10 +27,15 @@ export class AccountService implements IAccountService {
             });
     }
     getAccountDetails(clientId: number, accountNumber: string) {
-
     }
     createAccount(account: Account): Observable<any> {
         return this.http.post(this._serviceUrl, account)
+            .map(response => {
+                return response.json();
+            });;
+    }
+    deleteAccount(accountNumber: string): Observable<any> {
+        return this.http.delete(this._serviceUrl + "/" + accountNumber)
             .map(response => {
                 return response.json();
             });;

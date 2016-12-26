@@ -9,7 +9,7 @@ import { AccountService } from '../TMP.BNK.Account-Store/account.service';
 })
 export class AccountCreateComponent implements OnInit {
   @Input() clientId: number;
-  @Output() OnCreate = new EventEmitter();
+  @Output() OnCreated = new EventEmitter();
   private acccount: Account;
   constructor(private accountService: AccountService) {
   }
@@ -27,7 +27,7 @@ export class AccountCreateComponent implements OnInit {
   createAccount() {
     this.accountService.createAccount(this.acccount)
       .subscribe(response => {
-        this.OnCreate.emit();
+        this.OnCreated.emit();
       });
   }
 }
