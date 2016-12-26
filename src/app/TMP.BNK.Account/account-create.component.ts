@@ -15,13 +15,7 @@ export class AccountCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.acccount = {
-      Number: "SA000000001",
-      Title: "",
-      Type: "",
-      Balance: null,
-      ClientId: this.clientId
-    };
+    this.acccount = { Number: "", Title: "", Type: "", Balance: null, ClientId: this.clientId };
   }
 
   createAccount() {
@@ -29,5 +23,8 @@ export class AccountCreateComponent implements OnInit {
       .subscribe(response => {
         this.OnCreated.emit();
       });
+  }
+  postCreationProcess(){
+    
   }
 }

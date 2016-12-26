@@ -44,6 +44,8 @@ export class BankOnlineComponent implements OnInit {
   }
   refreshAccountList() {
     this.getAccounts();
+    this.action = Operation.NONE;
+    this.message = "Your request has been completed";
     console.log("Account created");
   }
 }

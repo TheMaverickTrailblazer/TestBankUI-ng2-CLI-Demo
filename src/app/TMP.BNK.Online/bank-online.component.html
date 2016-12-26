@@ -1,29 +1,37 @@
-<div class="row">
-  <div class="col-md-4">
+<main>
+  <div>
     <bnk-header></bnk-header>
   </div>
-  <div class="col-md-4">
+  <p>
     <bnk-client-info [clientId]="clientId"></bnk-client-info>
+    Welcome to TMP Banking Online!!
+  </p>
+  <div class="row">
+    <div class="col-md-6">
+      <bnk-account-list [accounts]="accounts" (OnDepositRequested)="showDepositModal($event)" (OnWithdrawRequested)="showWithdrawModal($event)"
+        (OnDeleteRequested)="showDeleteAccountModal($event)">
+      </bnk-account-list>
+      <button (click)="showCreateAccountModal()">Create an Account</button>
+      <hr/>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="action==0" class="alert alert-success">
+        {{message}}
+      </div>
+
+      <!--TODO: should be handled with routing and modal dialog-->
+      <div *ngIf="action==1">
+        <bnk-account-create [clientId]="clientId" (OnCreated)="refreshAccountList()"></bnk-account-create>
+      </div>
+      <div *ngIf="action==2 && selectedAccount">
+        <bnk-account-delete [account]="selectedAccount" (OnDeleted)="refreshAccountList()"></bnk-account-delete>
+      </div>
+      <div *ngIf="action==3 && selectedAccount">
+        <bnk-account-deposit [account]="selectedAccount" (OnDeposited)="refreshAccountList()"></bnk-account-deposit>
+      </div>
+      <div *ngIf="action==4 && selectedAccount">
+        <bnk-account-withdraw [account]="selectedAccount" (OnWithdrawn)="refreshAccountList()"></bnk-account-withdraw>
+      </div>
+    </div>
   </div>
-</div>
-<p>
-  Welcome to TMP Banking Online!!
-</p>
-<bnk-account-list [accounts]="accounts" (OnDepositRequested)="showDepositModal($event)" (OnWithdrawRequested)="showWithdrawModal($event)"
-  (OnDeleteRequested)="showDeleteAccountModal($event)">
-</bnk-account-list>
-<button (click)="showCreateAccountModal()">Create an Account</button>
-<hr/>
-<!--TODO: should be handled with routing and modal dialog-->
-<div *ngIf="action==1">
-  <bnk-account-create [clientId]="clientId" (OnCreated)="refreshAccountList()"></bnk-account-create>
-</div>
-<div *ngIf="action==2 && selectedAccount">
-  <bnk-account-delete [account]="selectedAccount" (OnDeleted)="refreshAccountList()"></bnk-account-delete>
-</div>
-<div *ngIf="action==3 && selectedAccount">
-  <bnk-account-deposit [account]="selectedAccount" (OnDeposited)="refreshAccountList()"></bnk-account-deposit>
-</div>
-<div *ngIf="action==4 && selectedAccount">
-  <bnk-account-withdraw [account]="selectedAccount" (OnWithdrawn)="refreshAccountList()"></bnk-account-withdraw>
-</div>
+</main>
