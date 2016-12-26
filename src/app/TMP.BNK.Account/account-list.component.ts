@@ -8,13 +8,13 @@ import { Account } from '../TMP.BNK.Core/view-models'
 })
 export class AccountListComponent implements OnInit {
   @Input() accounts: Account[];
-  @Output() OnDeleteRequest: EventEmitter<string> = new EventEmitter<string>();
+  @Output() OnDeleteRequest: EventEmitter<Account> = new EventEmitter<Account>();
   constructor() { }
 
   ngOnInit() {
 
   }
-  showDeleteAccount(accountNumber: string) {
-    this.OnDeleteRequest.emit(accountNumber);
+  showDeleteAccount(account: Account) {
+    this.OnDeleteRequest.emit(account);
   }
 }
