@@ -13,7 +13,7 @@
       <td>{{account.Number}}</td>
       <td>{{account.Title}}</td>
       <td>{{account.Type}}</td>
-      <td>{{account.Balance}}</td>
+      <td>{{account.Balance | currency:'USD':true}}</td>
       <td><button (click)="showDepositAccountModal(account)">Deposit</button></td>
       <td><button (click)="showWithdrawAccountModal(account)">Withdraw</button></td>
       <td><button (click)="showDeleteAccountModal(account)">Delete</button></td>
