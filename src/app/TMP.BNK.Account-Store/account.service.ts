@@ -8,8 +8,10 @@ import { Account } from '../TMP.BNK.Core/view-models';
 export interface IAccountService {
     getAccounts(clientId: number): Observable<Account[]>
     getAccountDetails(clientId: number, accountNumber: string);
-    createAccount(account: Account): Observable<Account[]>
-    deleteAccount(accountNumber: string): Observable<any>
+    createAccount(account: Account): Observable<Account[]>;
+    deleteAccount(accountNumber: string): Observable<any>;
+    deposit(accountNumber: string, amount: number): Observable<any>;
+    withdraw(accountNumber: string, amount: number): Observable<any>;
 }
 
 @Injectable()
@@ -36,6 +38,19 @@ export class AccountService implements IAccountService {
     }
     deleteAccount(accountNumber: string): Observable<any> {
         return this.http.delete(this._serviceUrl + "/" + accountNumber)
+            .map(response => {
+                return response.json();
+            });;
+    }
+    deposit(accountNumber: string, amount: number): Observable<any> {
+        return this.http.post(this._serviceUrl + "/" + accountNumber + "/deposit/" + amount, null)
+            .map(response => {
+                return response.json();
+            });;
+    }
+
+    withdraw(accountNumber: string, amount: number): Observable<any> {
+        return this.http.post(this._serviceUrl + "/" + accountNumber + "/withdraw/" + amount, null)
             .map(response => {
                 return response.json();
             });;

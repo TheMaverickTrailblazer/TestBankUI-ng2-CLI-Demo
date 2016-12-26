@@ -30,6 +30,14 @@ export class BankOnlineComponent implements OnInit {
   showCreateAccountModal() {
     this.action = Operation.CREATE;
   }
+  showDepositModal(account: Account) {
+    this.action = Operation.DEPOSIT;
+    this.selectedAccount = account;
+  }
+  showWithdrawModal(account: Account) {
+    this.action = Operation.WITHDRAW;
+    this.selectedAccount = account;
+  }
   showDeleteAccountModal(account: Account) {
     this.action = Operation.DELETE;
     this.selectedAccount = account;
